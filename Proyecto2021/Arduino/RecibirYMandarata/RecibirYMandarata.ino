@@ -36,6 +36,6 @@ void loop()
    // calcular caudal L/min
    float flow_Lmin = frequency / factorK;
    SumVolume(flow_Lmin);
-   Serial.println(volume, 1);
+   Serial.println(volume);
 
 }
