@@ -39,8 +39,8 @@ void loop() {
     Meter2->tick(period);
 
     // output some measurement result
-    Serial.println("Meter 1 currently " + String(Meter1->getCurrentFlowrate()) + " l/min, " + String(Meter1->getTotalVolume())+ " l total.");
-    Serial.println("Meter 2 currently " + String(Meter2->getCurrentFlowrate()) + " l/min, " + String(Meter2->getTotalVolume())+ " l total.");
+    Serial.println(String(Meter1->getTotalVolume())+ "+");
+    Serial.println(String(Meter2->getTotalVolume())+ "*");
 
     //
     // any other code can go here
