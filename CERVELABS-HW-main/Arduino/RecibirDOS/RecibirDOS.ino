@@ -11,6 +11,8 @@ FlowMeter *Meter1;
 FlowMeter *Meter2;
 FlowMeter *Meter3;
 long lastTime = 0;
+long minutes = 0;
+long hours = 0;
 
 // set the measurement update period to 1s (1000 ms)
 const unsigned long period = 1000;
