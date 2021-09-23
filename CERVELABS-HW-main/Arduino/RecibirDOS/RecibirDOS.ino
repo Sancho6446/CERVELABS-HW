@@ -9,6 +9,7 @@ String Caudalimetro3 = "0";
 // connect a flow meter to an interrupt pin (see notes on your Arduino model for pin numbers)
 FlowMeter *Meter1;
 FlowMeter *Meter2;
+FlowMeter *Meter3;
 long lastTime = 0;
 
 // set the measurement update period to 1s (1000 ms)
@@ -73,7 +74,7 @@ void loop() {
 
   
   if (myFile) {
-    myFile.println("600.12,10-300,3-210.3,21" \n);
+    myFile.println("600.12+,10-300*,3-210.3,21~" \n);
     myFile.close();
     
   } 
@@ -86,5 +87,3 @@ void loop() {
     myFile.close();
   } 
   }
-
-}
