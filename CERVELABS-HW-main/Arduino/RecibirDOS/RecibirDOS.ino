@@ -55,9 +55,9 @@ void loop() {
     Meter3->tick(period);
 
     // output some measurement result
-   Caudalimetro1 = String(Meter1->getTotalVolume()));
-   Caudalimetro2 = String(Meter2->getTotalVolume()));
-   Caudalimetro3 = String(Meter3->getTotalVolume()));
+   Caudalimetro1 = String(Meter1->getTotalVolume()+"+");
+   Caudalimetro2 = String(Meter2->getTotalVolume()+"*");
+   Caudalimetro3 = String(Meter3->getTotalVolume()+"~");
 
  if(millis()-lastTime > 10000){//60000 == 60 segundos
     minutes++;
