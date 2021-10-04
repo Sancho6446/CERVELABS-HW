@@ -71,6 +71,9 @@ void loop() {
    Caudalimetro3 = String(Meter3->getTotalVolume());
    Caudalimetrol =  Caudalimetrol + "~";
    
+   Serial.print(Caudalimetrol);
+   Serial.print(Caudalimetro2);
+   Serial.print(Caudalimetro3);
 
  if(millis()-lastTime > 10000){//60000 == 60 segundos
     minutes++;
@@ -89,16 +92,11 @@ void loop() {
 
   
   if (myFile) {
-    myFile.println("600.12+,10-300*,3-210.3,21~\n" );
+    myFile.println(Caudalimetrol);
+    myFile.println(Caudalimetro2);
+    myFile.println(Caudalimetro3);
     myFile.close();
     
-  } 
-  // re-open the file for reading:
-  myFile = SD.open("Datos.txt");
- 
-    while (myFile.available()) {
-      Serial.write(myFile.read());
-    }
-    myFile.close();
-  } 
+  }  
   }
+}
