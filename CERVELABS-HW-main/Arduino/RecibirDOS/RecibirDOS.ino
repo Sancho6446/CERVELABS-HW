@@ -6,6 +6,15 @@ File myFile;
 String Caudalimetrol = "0";
 String Caudalimetro2 = "0";
 String Caudalimetro3 = "0";
+//Calibration
+const double cap = 25.0f;  // l/min
+const double kf = 5.5f;     // Hz per l/min        
+FlowSensorProperties Canillas = {cap, kf, {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
+const double capD = 6.0f;  // l/min
+const double kfD = 9.3f; 
+FlowSensorProperties Descarte = {capD, kfD, {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
+
+
 // connect a flow meter to an interrupt pin (see notes on your Arduino model for pin numbers)
 FlowMeter *Meter1;
 FlowMeter *Meter2;
@@ -38,11 +47,11 @@ void setup() {
     Serial.begin(115200);
 
     // get a new FlowMeter instance for an uncalibrated flow sensor and let them attach their 'interrupt service handler' (ISR) on every rising edge
-    Meter1 = new FlowMeter(digitalPinToInterrupt(2), UncalibratedSensor, Meter1ISR, RISING);
+    Meter1 = new FlowMeter(digitalPinToInterrupt(2), Descarte, Meter1ISR, RISING);
     
     // do this setup step for every  FlowMeter and ISR you have defined, depending on how many you need
-    Meter2 = new FlowMeter(digitalPinToInterrupt(3), UncalibratedSensor, Meter2ISR, RISING);
-    Meter3 = new FlowMeter(digitalPinToInterrupt(18), UncalibratedSensor, Meter3ISR, RISING); //2, 3, 18, 19, 20, 21
+    Meter2 = new FlowMeter(digitalPinToInterrupt(3), Canillas, Meter2ISR, RISING);
+    Meter3 = new FlowMeter(digitalPinToInterrupt(18), Canillas, Meter3ISR, RISING); //2, 3, 18, 19, 20, 21
 }
 
 void loop() {
@@ -55,9 +64,13 @@ void loop() {
     Meter3->tick(period);
 
     // output some measurement result
-   Caudalimetro1 = String(Meter1->getTotalVolume()+"+");
-   Caudalimetro2 = String(Meter2->getTotalVolume()+"*");
-   Caudalimetro3 = String(Meter3->getTotalVolume()+"~");
+   Caudalimetrol = String(Meter1->getTotalVolume());
+   Caudalimetrol =  Caudalimetrol + "+";
+   Caudalimetro2 = String(Meter2->getTotalVolume());
+   Caudalimetrol =  Caudalimetrol + "*";
+   Caudalimetro3 = String(Meter3->getTotalVolume());
+   Caudalimetrol =  Caudalimetrol + "~";
+   
 
  if(millis()-lastTime > 10000){//60000 == 60 segundos
     minutes++;
@@ -76,7 +89,7 @@ void loop() {
 
   
   if (myFile) {
-    myFile.println("600.12+,10-300*,3-210.3,21~" \n);
+    myFile.println("600.12+,10-300*,3-210.3,21~\n" );
     myFile.close();
     
   } 
