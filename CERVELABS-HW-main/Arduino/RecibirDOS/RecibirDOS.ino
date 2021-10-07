@@ -1,3 +1,4 @@
+//MIPRIMERA VEZ USANDO GUT OCOMO UNA PERSONA NORMAL _ NASHEEEEE
 #include <FlowMeter.h>  // https://github.com/sekdiy/FlowMeter
 #include <SPI.h>
 #include <SD.h>
