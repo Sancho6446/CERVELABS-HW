@@ -67,9 +67,9 @@ void loop() {
    Caudalimetrol = String(Meter1->getTotalVolume());
    Caudalimetrol =  Caudalimetrol + "+";
    Caudalimetro2 = String(Meter2->getTotalVolume());
-   Caudalimetrol =  Caudalimetrol + "*";
+   Caudalimetro2 =  Caudalimetro2 + "*";
    Caudalimetro3 = String(Meter3->getTotalVolume());
-   Caudalimetrol =  Caudalimetrol + "~";
+   Caudalimetro3 =  Caudalimetro3 + "~";
    
    Serial.print(Caudalimetrol);
    Serial.print(Caudalimetro2);
@@ -92,8 +92,8 @@ void loop() {
 
   
   if (myFile) {
-    myFile.println(Caudalimetrol);
-    myFile.println(Caudalimetro2);
+    myFile.print(Caudalimetrol);
+    myFile.print(Caudalimetro2);
     myFile.println(Caudalimetro3);
     myFile.close();
     
