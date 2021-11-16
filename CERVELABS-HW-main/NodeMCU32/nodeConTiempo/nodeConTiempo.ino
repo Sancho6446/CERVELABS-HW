@@ -63,7 +63,7 @@ if(Caudalimetro3 == NULL){Caudalimetro3 = 0.0;}
     const int capacity = JSON_OBJECT_SIZE(2)+64;
     StaticJsonDocument<capacity> doc; 
     doc["pubId"] = "60e8797fde943f2afc94b8b2";
-    doc["record"] = String(Caudalimetrol +","+ Caudalimetro3+"-"+ Caudalimetro2 +",0");
+    doc["record"] = String(Caudalimetrol +","+ Caudalimetro3+"-"+ Caudalimetro2 +","+ Caudalimetro3+"-");
     String json;
     serializeJson(doc, json);
     int httpResponseCode = http.POST(json);    
