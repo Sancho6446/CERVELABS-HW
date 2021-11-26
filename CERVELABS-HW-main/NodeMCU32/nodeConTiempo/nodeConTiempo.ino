@@ -6,7 +6,7 @@
 /*const char* ssid = "Fibertel WiFi000 2.4GHz";
 const char* password = "0141840184";*/
 const char* ssid = "EDU-SPECIAL";
-const char* password = "TiC_1996$";
+const char* password = "IoT_1948$$";
 String serverName = "https://cervelabs.herokuapp.com/arduino/pub/add-record";
 String datos= "0";
 long lastTime = 0;
@@ -62,8 +62,8 @@ if(Caudalimetro3 == NULL){Caudalimetro3 = 0.0;}
       http.addHeader("Content-Type", "application/json");
     const int capacity = JSON_OBJECT_SIZE(2)+64;
     StaticJsonDocument<capacity> doc; 
-    doc["pubId"] = "60e8797fde943f2afc94b8b2";
-    doc["record"] = String(Caudalimetrol +","+ Caudalimetro3+"-"+ Caudalimetro2 +","+ Caudalimetro3+"-");
+    doc["pubId"] = "617aa269d18cd9001616c4cf";
+    doc["record"] = String(Caudalimetrol +","+ Caudalimetro3+"-"+ Caudalimetro2 +","+ Caudalimetro3);
     String json;
     serializeJson(doc, json);
     int httpResponseCode = http.POST(json);    
